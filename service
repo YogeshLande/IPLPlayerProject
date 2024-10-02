@@ -1,0 +1,29 @@
+package service;
+
+import java.util.List;
+
+import dao.IPLPlayerDAO;
+import entity.IPLPlayer;
+
+public class IPLPlayerService {
+	
+	IPLPlayerDAO playerDAO = new IPLPlayerDAO();
+	
+	
+	public void addPlayer(IPLPlayer player) {
+        playerDAO.addPlayer(player);
+    }
+	
+	public List<IPLPlayer> getAllPlayers(){
+		return playerDAO.getAllPlayers();
+	}
+	
+	public IPLPlayer getPlayerById(int id) {
+        return playerDAO.getPlayerById(id);
+    }
+	
+	public void deletePlayerByid(int deleteid) {
+		playerDAO.deletePlayerByid(deleteid);
+	}
+
+}
