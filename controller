@@ -1,0 +1,30 @@
+package controller;
+
+import java.util.List;
+
+import entity.IPLPlayer;
+import service.IPLPlayerService;
+
+public class IPLPlayerController {
+
+	IPLPlayerService playerservice = new IPLPlayerService();
+
+	public void addPlayer(IPLPlayer player) {
+		playerservice.addPlayer(player);
+	}
+
+	public List<IPLPlayer> getAllPlayers() {
+
+		return playerservice.getAllPlayers();
+	}
+	
+	public IPLPlayer getPlayerById(int id) {
+        return playerservice.getPlayerById(id);
+    }
+	
+	public void deletePlayerByid(int deleteid) {
+		 playerservice.deletePlayerByid(deleteid);
+		
+	}
+
+}
