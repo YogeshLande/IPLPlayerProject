@@ -1,0 +1,56 @@
+package dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import entity.IPLPlayer;
+
+public class IPLPlayerDAO {
+
+	private List<IPLPlayer> players;
+
+	public IPLPlayerDAO() {
+		players = new ArrayList<>();
+	}
+
+	public void addPlayer(IPLPlayer player) {
+
+		players.add(player);
+
+	}
+
+	public List<IPLPlayer> getAllPlayers() {
+		return players;
+
+	}
+
+	public IPLPlayer getPlayerById(int id) {
+
+		for (IPLPlayer player : players) {
+			if (player.getId() == id) {
+
+				return player;
+			}
+
+		}
+
+		return null;
+
+	}
+
+	public void deletePlayerByid(int id) {
+	    IPLPlayer playerToRemove = null;
+	    for (IPLPlayer player : players) {
+	        if (player.getId() == id) {
+	            playerToRemove = player;
+	            break;
+	        }
+	    }
+	    if (playerToRemove != null) {
+	        players.remove(playerToRemove); // Remove the player object from the list
+	    } else {
+	        System.out.println("Player with ID  " + id + "  not found.");
+	    }
+	}
+
+}
