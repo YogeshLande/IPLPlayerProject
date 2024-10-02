@@ -1,0 +1,105 @@
+package client;
+
+import java.util.Scanner;
+
+import controller.IPLPlayerController;
+import entity.IPLPlayer;
+
+public class Client {
+	public static void main(String[] args) {
+
+		IPLPlayerController controller = new IPLPlayerController();
+
+		Scanner sc = new Scanner(System.in);
+
+		while (true) {
+			System.out.println(" 1 : Add Player ");
+			System.out.println(" 2 : View All Players");
+			System.out.println(" 3 : View Player by id");
+			System.out.println(" 4 : Delete Player ");
+			System.out.println(" 5 :  Exit");
+			
+			System.out.println();
+			
+			System.out.println("Enter Your Choice");
+			int choice = sc.nextInt();
+
+			switch (choice) {
+
+			case 1:
+				System.out.println("Enter Player id ");
+
+				int id = sc.nextInt();
+				
+				sc.nextLine(); 
+				System.out.println("Enter Player Name ");
+
+				String name = sc.nextLine();
+
+				System.out.println("Enter Player Team ");
+
+				String team = sc.nextLine();
+
+				System.out.println("Enter Player Runs ");
+
+				int runs = sc.nextInt();
+				
+				IPLPlayer player = new IPLPlayer(id,name,team,runs);
+				controller.addPlayer(player);
+				
+				System.out.println();
+				
+                 break;
+                 
+			case 2:
+				System.out.println("            All Players       ");
+				System.out.println();
+				for (IPLPlayer player1 : controller.getAllPlayers()) {
+				    System.out.println(player1);
+				}
+				
+				System.out.println();
+				
+				break;
+				
+			case 3:
+				System.out.println("Enter Player id");
+				int playerid = sc.nextInt();
+				
+				IPLPlayer foundplayer = controller.getPlayerById(playerid);
+				
+				if(foundplayer!=null) {
+					System.out.println(foundplayer);
+				}else {
+					System.out.println("Player Not Found");
+				}
+				
+				System.out.println();
+				break;
+				
+			case 4:
+				System.out.println("Enter Player id to Delete");
+				
+				int deleteid = sc.nextInt();
+				controller.deletePlayerByid(deleteid);
+				
+				System.out.println("Player Deleted SucessFully");
+				
+				System.out.println();
+				 break;
+				 
+				 
+				 
+			case 5:
+                sc.close();
+                System.exit(0);
+
+            default:
+                System.out.println("Invalid choice.");
+			}
+			
+		}
+
+	}
+
+}
